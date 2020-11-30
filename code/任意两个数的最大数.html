@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function sum(a,b){
+				if(a > b) {
+					alert('最大值是:' + a)
+				}else if(a < b){
+					alert('最大值是:' + b)
+				}else if(a = b){
+					alert('两个值相等')
+				}else if(a != 'number' && b != 'number') {
+					alert('请输入数字')
+				}
+			}
+			var a = parseFloat(prompt('请输入第一个数'))
+			var b = parseFloat(prompt('请输入第二个数'))
+			sum(a,b)
+		</script>
+	</body>
+</html>

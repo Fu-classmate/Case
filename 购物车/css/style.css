@@ -1,0 +1,34 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	color: red;
+	text-align: center;
+}
+
+table {
+	margin: 0 auto;
+	width: 600px;
+	text-align: center;
+}
+
+.text {
+	width: 30px;
+	text-align: center;
+}
+
+.add,
+.reduce {
+	width: 20px;
+}
+
+.addBox {
+	text-align: center;
+	padding: 20px 10px;
+}
+
+.active {
+	background-color: pink;
+}

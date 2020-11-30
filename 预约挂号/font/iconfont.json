@@ -1,0 +1,16 @@
+{
+  "id": "2111583",
+  "name": "预约挂号",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "693586",
+      "name": "搜索",
+      "font_class": "search",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    }
+  ]
+}

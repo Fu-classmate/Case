@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function sum(b) {
+				var max = b[0]
+				for (var i = 1; i < b.length; i++) {
+					if (max < b[i]) {
+						max = b[i]
+					}
+				}
+				return max
+			}
+			var a = parseFloat(prompt('想输入多少个值进行比较'))
+			var b = []
+			var c;
+			for (var i = 0; i < a; i++) {
+				c = parseFloat(prompt('请输入第' + (i + 1) + '个值'))
+				b.push(c)
+			}
+			var f = sum(b)
+			document.write('最大值是：' + f)
+		</script>
+	</body>
+</html>

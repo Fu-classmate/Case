@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<script src="./js/template-web.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="./js/editbook_data.js"></script>
+
+	</head>
+	<body>
+		<div>修改图书</div>
+		<form></form>
+
+		<script type="text/html" id="tmp">
+			名称：<input type="text" name="name" class='name' value='{{data.name}}'><br>
+			作者：<input type="text" name="author" class='author' value={{data.author}}><br>
+			分类：<input type="text" name="category" class='category' value={{data.category}}><br>
+			描述：<input type="text" name="desc" class='desc' value={{data.desc}}><br>
+			<button id='btn'> 提交</button>
+		</script>
+	</body>
+</html>

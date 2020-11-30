@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>图书管理系统</title>
+		<link rel="stylesheet" href="/css/style.css">
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="./js/template-web.js"></script>
+		<script src="./js/index_data.js"></script>
+	</head>
+	<body>
+		<div class="title_index">图书管理系统<a href="/addbook.html">添加图书</a></div>
+		<div class="content_index">
+			<table cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>名称</th>
+						<th>作者</th>
+						<th>分类</th>
+						<th>描述</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id='tbody'></tbody>
+			</table>
+		</div>
+
+		<script type="text/html" id="tmp">
+			{{each data}}
+				<tr>
+					<td>{{$index+1}}</td>
+					<td>{{$value.name}}</td>
+					<td>{{$value.author}}</td>
+					<td>{{$value.category}}</td>
+					<td>{{$value.desc}}</td>
+					<td>
+						<a href="/editbook.html?id={{$value._id}}"  data-id="{{$value._id}}"  class='editBtn'>编辑</a>
+						<a href="#" class="delete_btn" data-item ={{$value._id}}>删除</a>
+					</td>
+				</tr>
+			{{/each}}
+		</script>
+	</body>
+</html>

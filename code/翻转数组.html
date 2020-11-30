@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var a = []
+			var num1 = parseFloat(prompt('您请输入多少位的数组'))
+			
+			for (var i = 1; i <= num1; i++) {
+				var num2 = parseFloat(prompt('请输入您的值'))
+				a.push(num2)
+			}
+
+			function sum(arr) {
+				var b = []
+				for (var i = arr.length -1; 0 <=i; i--) {
+					b.push(arr[i])
+				}
+				return b
+			}
+			var arr = sum(a)
+			document.write(arr)
+		</script>
+	</body>
+</html>

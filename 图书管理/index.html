@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="./lib/bootstrap.css" />
+	</head>
+
+	<body style="padding: 15px;">
+		<!-- 添加图书的Panel面板 -->
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">添加新图书</h3>
+			</div>
+			<div class="panel-body form-inline">
+				<!-- 顶部进行图书新增的结构部分 -->
+				<div class="input-group">
+					<div class="input-group-addon">书名</div>
+					<input type="text" class="form-control" id="iptBookname" placeholder="请输入书名">
+				</div>
+
+				<div class="input-group">
+					<div class="input-group-addon">作者</div>
+					<input type="text" class="form-control" id="iptAuthor" placeholder="请输入作者">
+				</div>
+
+				<div class="input-group">
+					<div class="input-group-addon">出版社</div>
+					<input type="text" class="form-control" id="iptPublisher" placeholder="请输入出版社">
+				</div>
+				<!-- 点击添加新图书 -->
+				<button id="btnAdd" class="btn btn-primary">添加</button>
+
+			</div>
+		</div>
+
+
+		<!-- 图书的表格 -->
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>书名</th>
+					<th>作者</th>
+					<th>出版社</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody id="tb">
+				<!-- 用于放置图书信息的tbody标签 -->
+				<!-- <tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>删除</td>
+				  </tr> -->
+
+			</tbody>
+		</table>
+
+		<script src='./js/jquery.js'></script>
+		<script>
+			/*
+      分析：
+        1 请求服务端的图书信息，进行表格展示
+          - 根据接口请求数据，进行字符串拼接后，生成到tbody中即可
+        2 新增图书功能
+          - 点击新增按钮
+          - 检测前面的三个输入框内容，如果为空，进行提示并阻止后续操作
+          - 将合理的内容发送给接口，让服务端保存
+          - 添加成功后，将表格内容进行更新
+        3 删除功能
+    */
+
+
+			//1 一进入到页面就获取到后台的数据 进行展示(render)渲染页面
+			var base = 'http://www.liulongbin.top:3006'
+
+			// 展示
+			showAjax()
+			function showAjax() {
+				$.ajax({
+					url: base + '/api/getbooks',
+					type: 'get',
+					data: {},
+					beforeSend: function () {
+						$('#tb').html('')
+					},
+					success: function(res) {
+						var data = res.data
+						$.each(data, function(index, eve) {
+							var show = $(
+								`<tr>
+							<td>${eve.id}</td>
+							<td>${eve.bookname}</td>
+							<td>${eve.author}</td>
+							<td>${eve.publisher}</td>
+							<td><button class='Remove'>删除</button></td>
+						  </tr>`
+							)
+							$('#tb').append(show)
+						})
+					},
+					error: function(err) {
+						console.log('失败')
+					}
+				})
+			}
+
+			//删除
+			$('#tb').on('click', '.Remove', function() {
+				var id = $(this).parent().parent().children().eq(0).html()
+				$.ajax({
+					url: base + '/api/delbook',
+					type: 'get',
+					data: {
+						id
+					},
+					success: function(res) {
+						 showAjax()
+					}
+				})
+			})
+			
+			//添加
+			function addAjax(){
+				$('#btnAdd').click(function(){
+					var bookname = $('#iptBookname').val().trim()
+					var author = $('#iptAuthor').val().trim()
+					var publisher = $('#iptPublisher').val().trim()
+					
+					$.ajax({
+						url:base + '/api/addbook',
+						type:'post',
+						data:{
+							bookname,
+							author,
+							publisher
+						},
+						beforeSend:function(){
+							$('#iptBookname').val('')
+							$('#iptAuthor').val('')
+							$('#iptPublisher').val('')
+						},
+						success: function(res) {
+							 showAjax()
+						}
+					})
+				})
+			}
+			addAjax()
+		</script>
+
+	</body>
+
+</html>

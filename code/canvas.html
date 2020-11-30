@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			canvas {
+				border: 1px solid #ff0000;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				top: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="1300px" height="700px"></canvas>
+
+		<script>
+			//第一步 获取元素
+			var myCanvas = document.querySelector('#myCanvas')
+
+			//第二部 调出画图工具
+			var context = myCanvas.getContext('2d') //3d
+
+			// 第三步 准备开始画图  (0,0)
+			context.beginPath() //起始路径 准备开始画
+			context.moveTo(900, 120) //画笔初始点
+			context.lineTo(1100, 120) //画笔结束点
+			context.stroke() //通过线条连接点  描边
+
+			//案例  //绘制正方形
+			context.beginPath()
+			context.lineWidth = 20 //边框
+			context.moveTo(100, 100)
+			context.lineTo(100, 200)
+			context.lineTo(200, 200)
+			context.lineTo(200, 100)
+			// context.lineTo(100,100)  //最后一个闭合
+			context.closePath() //直接闭合
+			context.fillStyle = '#FF0000' //设置填充的颜色
+			context.fill() //填充
+			context.stroke() //通过线条连接点
+
+			//绘制直角三角形方形
+			context.beginPath()
+			context.lineWidth = 30
+			context.moveTo(300, 100)
+			context.lineTo(300, 300)
+			context.lineTo(500, 300)
+			context.closePath() //直接闭合
+			context.fillStyle = 'blue' //设置填充的颜色
+			context.fill() //填充
+			context.stroke() //通过线条连接点
+
+			//描边颜色
+			context.beginPath()
+			context.lineWidth = 30
+			context.moveTo(100, 400)
+			context.lineTo(100, 500)
+			context.strokeStyle = 'red' //设置描边颜色
+			context.stroke()
+
+			//绘制矩形 rect(x, y, w, h)
+			//w轴 y轴 宽 高 
+			context.rect(600, 100, 200, 200)
+			context.fillStyle = 'blue' //设置填充的颜色
+			context.fill() //填充
+			context.stroke() //通过线条连接点
+
+			// 绘制圆 arc(x , y , r ,sAngle,eAngle,counterclockwise)
+			// 圆心x  圆心y  r圆的半径  sAngle起始弧度  eAngle结束弧度  
+			// counterclockwise 逆时针(true) 顺时针(false)
+			context.beginPath()
+			context.arc(300, 500, 50, 0, Math.PI * 2, true)
+			context.stroke() //通过线条连接点
+
+			// 绘制笑脸
+			context.beginPath()  //绘制外圆
+			context.lineWidth = 1
+			context.arc(600,500,80,0,Math.PI*2,true)
+			context.fillStyle = '#ffff00' //设置填充的颜色
+			context.fill() //填充
+			context.stroke() //通过线条连接点
+			
+			context.beginPath()  //绘制左边圆  眼睛
+			context.lineWidth = 1
+			context.arc(560,480,10,0,Math.PI*2,true)
+			context.fillStyle = '#000' //设置填充的颜色
+			context.fill() //填充
+			context.stroke() //通过线条连接点
+			
+			context.beginPath()  //绘制右边圆  眼睛
+			context.lineWidth = 1
+			context.arc(640,480,10,0,Math.PI*2,true)
+			context.fillStyle = '#000' //设置填充的颜色
+			context.fill() //填充
+			context.stroke() //通过线条连接点
+			
+			context.beginPath()  //绘制微笑  嘴巴
+			context.lineWidth = 3
+			// context.arc(600,500,60,Math.PI/4,Math.PI*(3/4),false)
+			context.arc(600,580,40,Math.PI*1.8,Math.PI*1.2,true)
+			context.strokeStyle = '#000' //设置描边颜色
+			context.stroke() //通过线条连接点
+			
+			//绘制扇形
+			context.beginPath()
+			context.lineWidth = 1
+			context.moveTo(900,500)
+			context.arc(900,500,80,0,Math.PI*1.5,true)
+			context.fillStyle = '#ff0000' //设置填充的颜色
+			context.fill() //填充
+			context.closePath() //直接闭合  闭合以起点  定义的轴点  终点
+			context.stroke() //通过线条连接点
+			
+			// 文字填充
+			context.beginPath()
+			context.font="50px Verdana";
+			context.fillText("Hello World!",900,200);
+		</script>
+	</body>
+</html>

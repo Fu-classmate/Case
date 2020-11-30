@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div {
+				width: 350px;
+				margin: 200px auto;
+				text-align: center;
+			}
+
+			p {
+				font-size: 30px;
+			}
+
+			span {
+				color: #fff;
+				background-color: #ffa500;
+			}
+
+			span {
+				color: #fff;
+				background-color: #ffa500;
+			}
+
+			div>p:first:child {
+				color: #ffa500;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>距离光棍节还有</h1>
+			<p id='p'></p>
+		</div>
+		<script>
+			//光棍节倒计时 2020 11 11 00:00:00
+			var p = document.getElementById('p')
+			singleDog() //刚进入时会出现页面延迟一秒才能看到内容 解决方案 先调用
+			setInterval(singleDog, 1000)
+
+			function singleDog() {
+				// 1 获取当前时间
+				var startTime = new Date()
+				// 2 获取光棍节时间
+				var endTime = new Date('2020 11 11 00:00:00')
+				var dTime = (endTime - startTime) / 1000
+
+				var day = Math.floor(dTime / 60 / 60 / 24)
+				var hour = Math.floor(dTime / 60 / 60 % 24)
+				var mm = Math.floor(dTime / 60 % 60)
+				var ss = Math.floor(dTime % 60)
+				
+				hour = hour < 10 ? '0' + hour : hour
+				mm = mm < 10 ? '0' + mm : mm
+				ss = ss < 10 ? '0' + ss : ss
+				
+				var str = `${day}天
+					<span>${hour}小时</span>
+					<span>${mm}分</span>
+					<span>${ss}秒</span>`
+				p.innerHTML = str
+			}
+		</script>
+	</body>
+</html>

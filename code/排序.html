@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 从小到大排列
+			
+			var arr = [5, 4, 3, 2, 1,8,9,7]
+			// 用前面一个数和后面一个数比较 
+			
+			// 循环的次数为数组长度减 1 次  第一层控制交换的次数
+			for (var i = 0; i < arr.length - 1; i++) {
+				// 第二层控制 前面的数 和 后面的数 交换位置
+				for (var j = 0; j < arr.length; j++) {
+					if (arr[j] > arr[j + 1]) {
+						// 申明一个变量 用来交换值
+						var tmp
+						tmp = arr[j]
+						arr[j] = arr[j + 1]
+						arr[j + 1] = tmp
+					}
+				}
+			}
+			document.write('从小到大排列：' +arr) 
+			
+			document.write('<hr>')
+			
+			// 从大到小排列
+			var arr = [5, 4, 3, 2, 1,8,9,7]
+			// 用前面一个数和后面一个数比较 
+			
+			// 循环的次数为数组长度减 1 次  第一层控制交换的次数
+			for (var i = 0; i < arr.length - 1; i++) {
+				// 第二层控制 前面的数 和 后面的数 交换位置
+				for (var j = 0; j < arr.length; j++) {
+					if (arr[j] < arr[j + 1]) {
+						// 申明一个变量 用来交换值
+						var tmp
+						tmp = arr[j]
+						arr[j] = arr[j + 1]
+						arr[j + 1] = tmp
+					}
+				}
+			}
+			document.write('从大到小排列：' +arr)
+			
+		</script>
+	</body>
+</html>

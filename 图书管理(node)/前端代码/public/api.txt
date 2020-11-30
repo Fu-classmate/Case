@@ -1,0 +1,17 @@
+desc: 删除接口信息,
+	req  	 url:'./delete'
+	method   get
+	params   {id   required }  必须传
+	res      {status   msg}
+	
+desc: 增加接口信息,
+	req  	 url:'./addBooks'
+	method   post
+	params   {name author category desc}  必须传
+	res      success {status:200   msg:'添加图书成功'}  error {status:500 err:'服务器添加失败' }
+	
+desc  查询单条图书信息接口 
+	req  	 url  '/query'
+	method   get
+	params   {id}      
+	res      success {  status:200  msg:'查询成功'  }  error { status:404, err:'查询失败'}

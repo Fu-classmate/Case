@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function sum(num) {
+				if (num > 1) {
+					for (var i = 2; i < num; i++) {
+						if (num % i == '0') {
+							return '不是质数'
+						}
+					}
+					return '是质数'
+				} else {
+					return '请输入大于1的数'
+				}
+			}
+			var num = parseInt(prompt('请输入一个数'))
+			var b = sum(num)
+			alert(b)
+		</script>
+	</body>
+</html>

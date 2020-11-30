@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function sum(a, b, c) {
+				if (a > b && a > c) {
+					alert('最大值是:' + a)
+				} else if (b > c && b > a) {
+					alert('最大值是:' + b)
+				} else if (c > a && c > b) {
+					alert('最大值是:' + c)
+				} else if (a = b = c) {
+					alert('三个值相等')
+				} else if (a != 'number' && b != 'number' && c != 'number') {
+					alert('请输入数字')
+				}
+			}
+			var a = parseFloat(prompt('请输入第一个数'))
+			var b = parseFloat(prompt('请输入第二个数'))
+			var c = parseFloat(prompt('请输入第三个数'))
+			sum(a, b, c)
+		</script>
+	</body>
+</html>

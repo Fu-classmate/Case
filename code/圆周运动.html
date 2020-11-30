@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			#box{width: 10px;height: 10px;position: absolute;background-color: red;border-radius: 50%;z-index: 1;}
+		</style>
+		<script>
+			window.onload = function () {
+				var box = document.getElementById("box")
+				//创建初始坐标
+				var x = 600
+				var y = 300
+				
+				//创建半径
+				var r = 100
+				
+				//创建转过的弧度
+				var i = 0
+				
+				setInterval(function(){
+					i++
+					var radin = i * Math.PI / 180
+					var a = Math.sin(radin) * r
+					var b = Math.cos(radin) * r
+					
+					box.style.left = x + a + 'px'
+					box.style.top = y - b + 'px'
+					
+					var node = document.createElement("div")
+					node.style.width = "5px"
+					node.style.height = "5px"
+					node.style.backgroundColor = "yellow"
+					node.style.position = "absolute"
+					node.style.left = box.offsetLeft + 'px'
+					node.style.top = box.offsetTop + 'px'
+					document.body.appendChild(node);
+				},30)
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
